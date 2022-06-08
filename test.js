@@ -4,7 +4,7 @@
       setTimeout(() => {
         resolve({
           data: {
-            address: 'http://localhost:3000/trace',
+            address: 'https://nocode.pages.dev/trace',
             data: [
               {
                 target: '#test_id_1',
