@@ -2,7 +2,7 @@
   <div class="p-4">
     <router-link :to="{ name: 'Setting' }" class="block text-blue-500 mb-4">回設定頁</router-link>
     <div id="test_id_1" class="">內容1</div>
-    <button id="test_id_2" class="">內容2</button>
+    <button id="test_id_2" class="bg-blue-500 rounded text-white p-2">內容2</button>
     <div id="test_id_3" class="p-4">
       <div class="test_class_1 p-4 bg-blue-200">內容3</div>
     </div>
@@ -14,6 +14,12 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { onMounted } from '@vue/runtime-core'
+
+onMounted(() => {
+  import('../../test.js')
+})
+</script>
 
 <style></style>

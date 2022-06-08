@@ -60,7 +60,6 @@ const handleSettingUpdate = (setting, uid) => {
               { title: '點擊 Banner', value: '1' },
               { title: '點擊 Nav', value: '9' },
             ]"
-            placeholder="選擇事件類型"
           />
         </div>
         <div class="">

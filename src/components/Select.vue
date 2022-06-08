@@ -1,5 +1,6 @@
 <template>
   <select v-model="selected" class="p-2 rounded border border-gray-400 h-full">
+    <option value="" selected disabled>選擇事件類型</option>
     <option v-for="item of optionLists" :key="item.value" :value="item.value">
       {{ item.title }}
     </option>
