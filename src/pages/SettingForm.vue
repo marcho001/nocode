@@ -1,5 +1,5 @@
 <script setup>
-import { isReactive, isRef, reactive, ref, toRefs, unref } from 'vue'
+import { computed, isReactive, isRef, reactive, ref, toRefs, unref } from 'vue'
 import Input from '../components/Input.vue'
 import Button from '../components/Button.vue'
 import Select from '../components/Select.vue'
@@ -35,6 +35,28 @@ const handleSettingUpdate = (setting, uid) => {
     }
     return item
   })
+}
+
+const computeSettingData = computed(() => {
+  const setting = JSON.parse(JSON.stringify(formSetting.data))
+  return {
+    address: address.value,
+    data: setting.map((item) => {
+      delete item.uuid
+      const eventSetting = Object.keys(item.eventDetail)
+        .sort((a, b) => a - b)
+        .map((col) => item.eventDetail[col])
+      return { ...item, eventDetail: eventSetting }
+    }),
+  }
+})
+const handleSave = () => {
+  const { address } = computeSettingData.value
+  if (!address) {
+    window.alert('請輸入網址')
+    return
+  }
+  console.log(computeSettingData.value)
 }
 </script>
 
@@ -82,7 +104,8 @@ const handleSettingUpdate = (setting, uid) => {
         />
       </div>
     </div>
-    <Button class="mt-4" @click="handleAddCondition">+ 新增條件</Button>
+    <Button class="m-4" @click="handleAddCondition">+ 新增條件</Button>
+    <Button class="m-4" @click="handleSave">儲存條件</Button>
   </div>
 </template>
 
