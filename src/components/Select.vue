@@ -11,7 +11,7 @@
 import { computed, ref, toRefs } from 'vue'
 const props = defineProps({
   optionLists: { type: Array, required: true },
-  modelValue: { type: String, required: true },
+  modelValue: { type: [String, Number], required: true }
 })
 const emit = defineEmits(['update:modelValue'])
 const { optionLists } = toRefs(props)
@@ -21,7 +21,7 @@ const selected = computed({
   },
   set(val) {
     emit('update:modelValue', val)
-  },
+  }
 })
 </script>
 
